@@ -26,3 +26,4 @@ print(''.join(stack))
 
 
 # last_occur = {c: i for i, c in enumerate(s)}
+#   sys.stdin.readline() input() 보다 빠르다
