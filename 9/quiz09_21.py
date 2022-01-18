@@ -10,7 +10,7 @@
 # 입력 >> "cbacdcbc"
 # 출력 >> "acdb"
 import collections
-s = 'ghcdadcbihghhhhgh'
+s = 'ghgcdgaagbd'
 counter,seen,stack = collections.Counter(s),set(),[]
 for char in s:
     counter[char] -= 1
