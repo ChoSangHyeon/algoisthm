@@ -16,4 +16,14 @@
 # circularQueue.enQueue(60);    // true 리턴
 # circularQueue.Rear();         // 60
 # circularQueue.Front();        // 30 리턴
+class Node:
+    def __init__(self, item,next):
+        self.item = item
+        self.next = next
+
+class MyCircularQueue:
+    def circularQueue(self,int):
+        while int >0:
+            Node(self,None,Node.Next)
+            
 
