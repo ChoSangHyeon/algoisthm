@@ -9,18 +9,20 @@
 # 예제 2.
 # 입력 >> "cbacdcbc"
 # 출력 >> "acdb"
+import collections
+s = 'ghgcdgaagbd'
+counter,seen,stack = collections.Counter(s),set(),[]
+for char in s:
+    counter[char] -= 1
+    if char in seen:
+        continue
+    print(stack+['hihi']+[char])
+    print(f'seen:{seen}')
+    while stack and char < stack[-1] and counter[stack[-1]]>0:
+        seen.remove(stack.pop())
+    stack.append(char)
+    seen.add(char)
+print(''.join(stack))
 
 
-a = 'ffiisdjefajhkldfaasdvjlkasdjf'
-b = []
-c = (''.join(sorted(a)))
-for char in c:
-    b.append(char)
-i = 0
-while i < len(b)-1:
-    if b[i] == b[i+1]:
-        del b[i+1]
-        i -= 1
-    i +=1
-d = (''.join(sorted(b)))
-print(d)
+# last_occur = {c: i for i, c in enumerate(s)}
