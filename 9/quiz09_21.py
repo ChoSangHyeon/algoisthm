@@ -9,26 +9,20 @@
 # 예제 2.
 # 입력 >> "cbacdcbc"
 # 출력 >> "acdb"
-
-
-a = 'cbfafdegecaddecbg'
-b = []
-c = []
-d = []
-for char in a:
-    b.append(char)
-for num,char in enumerate(b):
-    j = 0
-    while j < len(c):
-        if char == b[c[j]]:
-            c.pop(j)
-        j += 1
-    c.append(num)
-print(c)
-for k in c:
-    d.append(b[k])
-e = ''.join(d)
-print(e)
+import collections
+s = 'ghcdadcbihghhhhgh'
+counter,seen,stack = collections.Counter(s),set(),[]
+for char in s:
+    counter[char] -= 1
+    if char in seen:
+        continue
+    print(stack+['hihi']+[char])
+    print(f'seen:{seen}')
+    while stack and char < stack[-1] and counter[stack[-1]]>0:
+        seen.remove(stack.pop())
+    stack.append(char)
+    seen.add(char)
+print(''.join(stack))
 
 
 # last_occur = {c: i for i, c in enumerate(s)}
