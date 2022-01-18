@@ -11,16 +11,24 @@
 # 출력 >> "acdb"
 
 
-a = 'ffiisdjefajhkldfaasdvjlkasdjf'
+a = 'cbfafdegecaddecbg'
 b = []
-c = (''.join(sorted(a)))
-for char in c:
+c = []
+d = []
+for char in a:
     b.append(char)
-i = 0
-while i < len(b)-1:
-    if b[i] == b[i+1]:
-        del b[i+1]
-        i -= 1
-    i +=1
-d = (''.join(sorted(b)))
-print(d)
+for num,char in enumerate(b):
+    j = 0
+    while j < len(c):
+        if char == b[c[j]]:
+            c.pop(j)
+        j += 1
+    c.append(num)
+print(c)
+for k in c:
+    d.append(b[k])
+e = ''.join(d)
+print(e)
+
+
+# last_occur = {c: i for i, c in enumerate(s)}
