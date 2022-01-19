@@ -6,20 +6,41 @@
 # 예제 1.
 # 입력 >> J = "aA", S = "aAAbbbb"
 # 출력 >> 3
-import collections
+def sj(j,s):
+    dic = []
+    cnt = 0
+    for i in j:
+        dic.append(i)
+    for k in s:
+        if k in dic:
+           cnt += 1
+    return cnt
+    print(dic)
+print(sj('aA','adsdAf'))
 
-class ListNode:
-    def __init__(self,key=None,val=None):
-        self.key = key
-        self.val = val
-        self.next = None
-
-class SJ:
-    def __init__(self):
-        self.size = 1000
-        self.dic = collections.defaultdict()
-
-    def stone(j,s):
-        
+# =====================
+# import collections
+#
+# class ListNode:
+#     def __init__(self,key=None,val=None):
+#         self.key = key
+#         self.val = val
+#         self.next = None
+#
+# class SJ:
+#     def __init__(self):
+#         self.size = 1000
+#         self.dic = collections.defaultdict()
+#         self.cnt = collections.Counter
+#
+#     def stone(self,j,s):
+#         for _ in j:
+#
+#         index = j % self.size
+#         if not self.dic:
+#             self.dic[index] = ListNode(j,s)
+#         temp = self.dic[index]
+#
+#
 
 
