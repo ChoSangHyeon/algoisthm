@@ -17,3 +17,72 @@
 # hashMap.get(2);       // 1을 리턴한다
 # hashMap.remove(2);    // 키 2에 해당하는 키, 값을 삭제한다
 # hashMap.get(2);       // -1을 리턴한다 (키가 삭제되어 존재하지 않음)
+import collections
+
+class ListNode:
+    def __init__(self,key=None,val=None):
+        self.key = key
+        self.val = val
+        self.next = None
+
+class MyHashMap:
+    def __init__(self):
+        self.dic = collections.defaultdict(ListNode)
+        self.size = 1000
+
+    def put(self,key:int,val):
+        index = key % self.size
+        if self.dic[index].val is None:
+            self.dic[index] = ListNode(key,val)
+            return
+        temp = self.dic[index]
+        while temp:
+            if temp.key == key:
+                temp.val = val
+                return
+            if temp.next is None:
+                break
+            temp = temp.next
+
+        temp.next = ListNode(key,val)
+        return
+
+    def get(self,key:int):
+        index = key % self.size
+        if self.dic[index].val is None:
+            return -1
+        temp = self.dic[index]
+        while temp:
+            if temp.key == key:
+                return temp.val
+            temp = temp.next
+        return -1
+
+    def remove(self,key:int):
+        index = key % self.size
+        if self.dic[index].val is None:
+            return
+        temp = self.dic[index]
+        if temp.key == key:
+            self.dic[index] = ListNode() if temp.next is None else temp.next
+            return
+        temp1 = temp
+        while temp:
+            if temp.key == key:
+                temp1.next = temp.next
+                return
+            temp1,temp = temp,temp.next
+
+        return
+
+def test():
+    ht = MyHashMap()
+    ht.put(1,1)
+    ht.put(2,2)
+    assert ht.get(1) == 1
+    assert ht.get(3) == -1
+    ht.put(2, 1)
+    assert ht.get(2) == 1
+    ht.remove(2)
+    assert ht.get(2) == -1
+test()
