@@ -17,8 +17,8 @@ def sub(s:str):
     used = {}
     max_len = start =0
     for index,char in enumerate(s):
-        print(used)
-        print(start)
+        # print(used)
+        # print(start)
         if char in used and start <= used[char]:
             start = used[char]+1
         else:
