@@ -17,3 +17,32 @@
 # 테스트케이스의 첫 번째 줄에는 문서의 개수 N(1 ≤ N ≤ 100)과, 몇 번째로 인쇄되었는지 궁금한 문서가 현재 Queue에서
 # 몇 번째에 놓여 있는지를 나타내는 정수 M(0 ≤ M < N)이 주어진다. 이때 맨 왼쪽은 0번째라고 하자. 두 번째 줄에는 N개
 # 문서의 중요도가 차례대로 주어진다. 중요도는 1 이상 9 이하의 정수이고, 중요도가 같은 문서가 여러 개 있을 수도 있다.
+import collections
+import sys
+
+a =int(input())
+f = []
+for _ in range(a):
+    cnt = 0
+    d = []
+    b, c = map(int, input().split())
+    e = collections.deque(map(int, sys.stdin.readline().split()))
+    d = collections.deque([0]*len(e))
+    d[c] = 1
+    while True:
+        if e[0] == max(e) and d[0] == 1:
+            cnt += 1
+            f.append(cnt)
+            break
+        elif e[0] == max(e):
+            e.popleft()
+            d.popleft()
+            cnt += 1
+        else:
+            e.append(e.popleft())
+            d.append(d.popleft())
+
+for i in f:
+    print(i)
+
+

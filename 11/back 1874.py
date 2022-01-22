@@ -21,11 +21,12 @@ for _ in range(c):
             e.append(f)
             d.append('+')
         else:
-            print("NO")
             flag =1
             break
 if flag==0:
     for h in d:
         print(h)
+else:
+    print('NO')
 
 

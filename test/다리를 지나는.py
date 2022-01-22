@@ -45,3 +45,31 @@ b= 100
 c =[10]
 
 print(solution(a,b,c))
+
+# def solution(bridge_length, weight, truck_weights):
+#     lists = deque([0]*bridge_length)
+#     count = 0
+#     while truck_weights:
+#         if sum(lists, truck_weights[0]-lists[0]) <= weight:
+#             lists.popleft()
+#             lists.append(truck_weights.pop(0))
+#             count += 1
+#             print(lists)
+#             print(truck_weights)
+#         else:
+#             lists.popleft()
+#             lists.append(0)
+#             count += 1
+#             print(lists)
+#             print(truck_weights)
+#
+#
+#     count += bridge_length
+#     print(count)
+#     return lists
+#
+# bridge_length = 2
+# weight = 10
+# truck_weights = [7, 4, 5, 6]
+#
+# print(solution(bridge_length, weight, truck_weights))

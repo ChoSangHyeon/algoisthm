@@ -6,3 +6,23 @@
 # A[1], A[2], …, A[N]이 주어진다. 다음 줄에는 M(1 ≤ M ≤ 100,000)이 주어진다.
 # 다음 줄에는 M개의 수들이 주어지는데, 이 수들이 A안에 존재하는지 알아내면 된다.
 # 모든 정수의 범위는 -231 보다 크거나 같고 231보다 작다.
+import sys
+
+a = int(sys.stdin.readline())
+b = list(map(int, sys.stdin.readline().split()))
+c = int(sys.stdin.readline())
+d = list(map(int, sys.stdin.readline().split()))
+main = {}
+for i in b:
+    main[i] = 1
+for i in d:
+    if i in main:
+        print(1)
+    else:
+        print(0)
+
+#
+# print(a)
+# print(b)
+# print(c)
+# print(d)
