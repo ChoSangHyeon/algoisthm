@@ -10,3 +10,23 @@
 # 예제 2.
 # 입력 >> [["JFK", "SFO"], ["JFK", "ATL"], ["SFO", "ATL"], ["ATL", "JFK"], ["ATL", "SFO"]]
 # 출력 >> ["JFK", "ATL", "JFK", "SFO", "ATL", "SFO"]
+import collections
+
+def refac(trip):
+    dic = collections.defaultdict(list)
+    for a,b in sorted(trip):
+        dic[a].append(b)
+    print(dic)
+    res = []
+    def dfs(x):
+        while dic[x]:
+            dfs(dic[x].pop(0))
+        res.append(x)
+    dfs('JFK')
+    return res[::-1]
+
+
+
+a = [["JFK", "NFO"], ["JFK", "ATL"],["NFO", "JFK"]]
+
+print(refac(a))
