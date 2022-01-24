@@ -1,3 +1,4 @@
 
-ans = list(range(5))
-print(ans)
+a = 'abcabccc'
+b = a[5]
+print(b)

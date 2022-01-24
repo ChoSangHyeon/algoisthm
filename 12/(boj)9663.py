@@ -6,11 +6,10 @@ def nqueen(n):
     cnt = 0
     res = []
     def isOk(thatRow,i):
-        for a in range(thatRow):
-            if thatRow - a == abs(main[a] - main[thatRow]):
-                input.append(i)
-                input.sort()
-                return False
+        if main1[thatRow][i] == 1:
+            input.append(i)
+            input.sort()
+            return False
         return True
     def dfs(row):
         if row >= n:
@@ -29,7 +28,17 @@ def nqueen(n):
             input.remove(i)
             if isOk(row,i):
                 for j in range(n):
-                    main1[j] = 
+                    if (row +j) < n and (i+j) < n:
+                        main1[row + j][i+j] = 1
+                for j in range(n):
+                    if (row +j) < n and (i-j) < n:
+                        main1[row + j][i-j] = 1
+                for j in range(n):
+                    if (row -j) < n and (i-j) < n:
+                        main1[row - j][i-j] = 1
+                for j in range(n):
+                    if (row -j) < n and (i+j) < n:
+                        main1[row - j][i+j] = 1
                 dfs(row +1)
             if not i in input:
                 input.append(i)

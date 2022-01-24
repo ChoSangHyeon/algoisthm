@@ -18,3 +18,26 @@
 #
 # 출력
 # 각 테스트 케이스마다, n을 1, 2, 3의 합으로 나타내는 방법의 수를 출력한다.
+import sys
+
+c = int(input())
+def hihi(z):
+    d = []
+    b = [1, 2, 3]
+    def hi(num):
+        for i in b:
+            if sum(num) + i >= z:
+                if sum(num) + i == z:
+                    d.append(num+[i])
+                    return
+                else:
+                    return
+            hi(num+[i])
+    hi([])
+    return len(d)+1
+
+
+for _ in range(c):
+    k = int(sys.stdin.readline())
+    print(hihi(k))
+

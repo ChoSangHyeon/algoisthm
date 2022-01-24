@@ -19,3 +19,17 @@
 # 출력
 # 각 줄에 하나씩, 사전식으로 가능성 있는 암호를 모두 출력한다.
 #
+import sys
+a,b = map(int,input().split())
+c = sys.stdin.readline()
+d = []
+for i in c:
+    d.append(i)
+d.sort()
+e = []
+def num(input,index):
+    if len(input) == int(a):
+
+    for i in range(index,len(d)):
+        input.append(d[i])
+        num(input,i)
