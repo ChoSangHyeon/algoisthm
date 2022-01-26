@@ -1,51 +1,29 @@
-n = int(input())
-def nqueen(n):
-    main = [-1] * n
-    main1 = [[-1] * n for _ in range(n)]
-    input = list(range(n))
-    cnt = 0
-    res = []
-    def isOk(thatRow,i):
-        if main1[thatRow][i] == 1:
-            input.append(i)
-            input.sort()
+import sys
+n = int(sys.stdin.readline())
+main = [-1] * 15
+cnt = 0
+visited = [False for _ in range(n)]
+def isOk(thatRow):
+    for i in range(thatRow):
+        if main[i] == main[thatRow] or thatRow - i == abs(main[thatRow]-main[i]):
             return False
-        return True
-    def dfs(row):
-        if row >= n:
-            nonlocal cnt
-            cnt += 1
-            grid = [['.'] * n for _ in range(n)]
-            u = []
-            for a,b in enumerate(main):
-                grid[a][b] ='Q'
-            for c in grid:
-                u.append(''.join(c))
-            res.append(u)
-            return
-        for i in input:
-            main[row] = i
-            input.remove(i)
-            if isOk(row,i):
-                for j in range(n):
-                    if (row +j) < n and (i+j) < n:
-                        main1[row + j][i+j] = 1
-                for j in range(n):
-                    if (row +j) < n and (i-j) < n:
-                        main1[row + j][i-j] = 1
-                for j in range(n):
-                    if (row -j) < n and (i-j) < n:
-                        main1[row - j][i-j] = 1
-                for j in range(n):
-                    if (row -j) < n and (i+j) < n:
-                        main1[row - j][i+j] = 1
-                dfs(row +1)
-            if not i in input:
-                input.append(i)
-                input.sort()
-    dfs(0)
-    return cnt
-print(nqueen(n))
+    return True
+def dfs(row):
+    if row >= n:
+        global cnt
+        cnt += 1
+        return
+    for i in range(n):
+        if visited[i]:
+            continue
+        main[row] = i
+        if isOk(row):
+            visited[i]= True
+            dfs(row +1)
+            visited[i]=False
+dfs(0)
+
+print(cnt)
 # def nqueen(n):
 #     visited = [-1] * n
 #     cnt = 0
@@ -85,3 +63,31 @@ print(nqueen(n))
 #
 # assert nqueen(4) == [[".Q..", "...Q", "Q...", "..Q."], ["..Q.", "Q...", "...Q", ".Q.."]]
 
+
+# def backTracking(rowPos):
+#     global answer
+#
+#     # 퀸을 모두 배치했다면 끝
+#     if rowPos == n:
+#         answer += 1
+#         return
+#
+#     for col in range(n):
+#         flag = True
+#         # 이전 행들에 대해서
+#         for row in range(rowPos):
+#             # 같은 열에 위치해있거나 대각선에 퀸이 이미 존재한다면 가지치기
+#             if queenLocation[row] == col or rowPos - row == abs(col - queenLocation[row]):
+#                 flag = False
+#                 break
+#         if flag:
+#             queenLocation[rowPos] = col
+#             backTracking(rowPos + 1)
+#
+#
+# n = int(input())
+# answer = 0
+# # 각 row마다 queen이 위치하는 인덱스를 저장하는 리스트
+# queenLocation = [0] * n
+# backTracking(0)
+# print(answer)

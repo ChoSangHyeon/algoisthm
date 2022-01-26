@@ -21,15 +21,28 @@
 #
 import sys
 a,b = map(int,input().split())
-c = sys.stdin.readline()
-d = []
-for i in c:
-    d.append(i)
-d.sort()
+c = list(sys.stdin.readline().split())[:b]
+# a = 4
+# b = 6
+# c = ['a','t','c','i','s','w']
+c.sort()
 e = []
 def num(input,index):
-    if len(input) == int(a):
+    mu = input.count('a')+input.count('e')+input.count('i')+input.count('o')+input.count('u')
+    if len(input)== int(a):
+        if mu >= 1 and int(a)-mu >= 2:
+            f = ''.join(input[:])
+            e.append(f)
+        return
+    if len(input) > int(a):
+        return
+    for i in range(index,len(c)):
+        input.append(c[i])
+        # print(input)
+        num(input,i+1)
+        input.pop()
+    return e
 
-    for i in range(index,len(d)):
-        input.append(d[i])
-        num(input,i)
+num([],0)
+for i in e:
+    print(i)

@@ -3,14 +3,23 @@
 # Leet code Num. : 226
 
 # 이진트리 반전
-# 예제 1.
-# 입력 >>  4
-#       |  |
-#       2  7
-#     | |  | |
-#     1 3  6 9
-# 출력 >>  4
-#       |  |
-#       7  2
-#     | |  | |
-#     9 6  3 1
+class TreeNode:
+    def __init__(self,val):
+        self.val = val
+        self.left = None
+        self.right = None
+
+def reverse(root):
+    if root is None:
+        return root
+
+    def rev(node):
+        if node.left:
+            rev(node.left)
+        if node.right:
+            rev(node.right)
+        node.right, node.left = node.left, node.right
+        return
+
+    rev(root)
+    return root

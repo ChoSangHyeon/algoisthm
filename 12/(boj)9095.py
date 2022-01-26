@@ -34,7 +34,7 @@ def hihi(z):
                     return
             hi(num+[i])
     hi([])
-    return len(d)+1
+    return len(d)
 
 
 for _ in range(c):
