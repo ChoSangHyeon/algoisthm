@@ -1,9 +1,5 @@
-a,b = map(int,input().split())
+import collections
 
-if b-45 < 0:
-    if a==0:
-        print(f'{a+23} {b+15}')
-    else:
-        print(f'{a-1} {b+15}')
-else:
-    print(f'{a} {b-45}')
+a = collections.deque([4, 2, 2, 0, 2, 0, 0, -2, 2, 0, 0, -2, 0, -2, -2, -4])
+
+print(a.count(4))

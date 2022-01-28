@@ -11,6 +11,23 @@
 # 출력 >> false
 
 def lenth(tree):
-    a = 0
-    def dfs(input):
-        
+    if tree is None:
+        return True
+    res = []
+
+    def dfs(node):
+        left = right = 0
+        if node.left:
+            left = dfs(node.left) + 1
+        if node.right:
+            right = dfs(node.right) + 1
+        res.append(abs(left - right))
+        return max(left, right)
+
+    dfs(tree)
+    print(res)
+    if max(res) >= 2:
+        a = False
+    else:
+        a = True
+    return a
