@@ -28,7 +28,13 @@ def insertionsort(lst):
     return lst
 
 def insertionsort2(lst):
-    
+    for num in range(1,len(lst)):
+        val = lst[num]
+        cmp = num -1
+        while lst[cmp] > val and cmp >=0:
+            lst[cmp+1] = lst[cmp]
+            cmp -=1
+        lst[cmp+1] = val
 
     return lst
 assert insertionsort([4, 6, 2, 9, 1]) == [1, 2, 4, 6, 9]
