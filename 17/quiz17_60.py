@@ -10,11 +10,23 @@ class Node:
         self.next = None
 
 def insert(lst):
-    head = lst[:]
-    while lst.next:
+    node, prev = lst, None
+    cnt = 0
+    while node:
+        next, node.next = node.next, prev
+        prev,node = node, next
+        cnt += 1
 
-        while lst:
-            a = lst.val
-            if lst.next.val < lst.val:
-                lst.next.val = lst.val
+    for i in range(cnt):
+        for _ in range(i):
+            if node.next.val > node.val:
+                node.next.val, node.val = node.val, node.next.val
+            node = node.next
+
+    node1, prev1 = lst, None
+    while node1:
+        next1, node1.next = node1.next, prev1
+        prev1,node1 = node1, next1
+
+    return node1
 

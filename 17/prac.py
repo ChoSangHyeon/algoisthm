@@ -1,7 +1,7 @@
 def bubblesort(lst):
-    ai = len(lst)-1
-    for i in range(ai):
-        ia = ai - i
+    aiii = len(lst)-1
+    for i in range(aiii):
+        ia = aiii - i
         for a in range(ia):
             if lst[a] > lst[a+1]:
                 lst[a],lst[a+1] = lst[a+1],lst[a]
