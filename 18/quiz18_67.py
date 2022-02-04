@@ -13,3 +13,16 @@
 # Input: nums1 = [4,9,5], nums2 = [9,4,9,8,4]
 # Output: [9,4]
 # Explanation: [4,9] is also accepted.
+import bisect
+
+
+def insert(nums1:list[int],nums2:list[int]):
+    if not nums1 or not nums2:
+        return
+    res = set()
+    nums2.sort()
+    for i in nums1:
+        idx = bisect.bisect_left(nums2,i)
+        if idx < len(nums2) and nums2[idx] == i:
+            res.add(i)
+    return list(res)
