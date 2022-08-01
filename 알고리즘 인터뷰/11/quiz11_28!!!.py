@@ -32,6 +32,7 @@ class MyHashMap:
 
     def put(self,key:int,val):
         index = key % self.size
+        # self.dic[index] is None 으로 선언시 defaultdict설정과 충돌해 True 가 나오는경우가 없어진다.
         if self.dic[index].val is None:
             self.dic[index] = ListNode(key,val)
             return
@@ -67,6 +68,7 @@ class MyHashMap:
             self.dic[index] = ListNode() if temp.next is None else temp.next
             return
         temp1 = temp
+        # 와일문에서 temp1 이 이전 리스트를 가르키는데 첫번째 노드가 메인 리스트인경우 오류발생 하지만 위에서 첫번째 노드 검증을 마치고 두번째 노드부터시작한다,
         while temp:
             if temp.key == key:
                 temp1.next = temp.next
