@@ -44,3 +44,19 @@ print(sj('aA','adsdAf'))
 #
 
 
+# 해시테이블을 이용한 풀이
+
+def hashSol(j:str,s:str) -> int:
+    freqs = {}
+    count = 0
+    for char in s:
+        if char not in freqs:
+            freqs[char] = 1
+        else:
+            freqs[char] += 1
+    for char in j:
+        if char in freqs:
+            count += freqs[char]
+    return count
+
+print(hashSol('ac','accCccAs'))

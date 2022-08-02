@@ -13,6 +13,10 @@
 # 출력 >> false
 
 
+import collections
+from typing import Collection, Deque
+
+
 def isPalindrome(str):
     str = str.lower()
 
@@ -36,6 +40,9 @@ def isPalindrome(str):
         j -= 1
 
     return isPalin
+
+def ih(s:str)->bool:
+    strs: Deque = collections.deque()
 
 
 if __name__ == "__main__":
