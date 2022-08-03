@@ -50,6 +50,7 @@ def hashSol(j:str,s:str) -> int:
     freqs = {}
     count = 0
     for char in s:
+        # 여기에서 값이 없음을 IF문으로 처리해줬었는데 defaultdict를 사용하면 값이없을때 초기값부여가 쉽다.
         if char not in freqs:
             freqs[char] = 1
         else:
@@ -58,5 +59,6 @@ def hashSol(j:str,s:str) -> int:
         if char in freqs:
             count += freqs[char]
     return count
+    
 
 print(hashSol('ac','accCccAs'))

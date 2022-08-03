@@ -16,17 +16,19 @@
 def sub(s:str):
     used = {}
     max_len = start =0
+    # 리스트나 배열 스트링을 각각 순서와 값으로 나누어 집어넣어주는 기능한다.
     for index,char in enumerate(s):
         # print(used)
         # print(start)
         if char in used and start <= used[char]:
+            # 같은게 나왔을때 시작점보다 이전 인덱스에서 한번 나왔던것은 무시해야한다. 
             start = used[char]+1
         else:
             max_len = max(max_len,index - start +1)
         used[char]=index
     return max_len
 
-print(sub("abcabcfbb"))
+print(sub("tmmzuxt"))
 
 
 # def sub(s:str):
