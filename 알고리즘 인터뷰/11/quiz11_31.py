@@ -17,7 +17,6 @@ import collections
 #     return print(a,b,c)
 
 def tok(nums,k):
-    a = [1,2,3,4,5,6]
     print(collections.Counter(nums))
     print(collections.Counter(nums).most_common())
     print(list(zip(*collections.Counter(nums).most_common())))
@@ -40,6 +39,10 @@ print(tok(nums,k))
 
 # class Solution1:
 #     def topKFrequent(self, nums, k):
+# #         zip 함수는 여러개의 리스트를 묶어주는데 가장 수가 적은 리스트 기준으로 묶고 나머지는 버린다.
+# #         
+# #         아스테리스크(*)는 언패킹의 개념으로 출력에서 리스트를 풀어해쳐서 작성하는 모습을 볼수있다. 그리고 입력파라미터로 사용되면 
+# #         입력값이 여러개가 들어와도 그것을 리스트로 묶어서 처리하게된다 print문과 매우 유사하다.
 #         return list(zip(*collections.Counter(nums).most_common(k)))[0]
 #
 # import heapq
