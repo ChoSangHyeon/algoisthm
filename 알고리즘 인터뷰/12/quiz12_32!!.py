@@ -17,7 +17,7 @@
 #        00011
 # 출력 >> 3
 
-def grid(input:list[list[int]]):
+def grid_dfs(input: 'list[list[int]]')->int:
     dx = [0, 0, 1,-1]
     dy = [1,-1, 0, 0]
     row = len(input)
@@ -28,6 +28,7 @@ def grid(input:list[list[int]]):
             if input[a][b] == 1:
                 cnt +=1
                 stack = [[a,b]]
+            
 
                 while stack:
                     a1,b1 = stack.pop()
@@ -41,37 +42,36 @@ def grid(input:list[list[int]]):
 
     return cnt
 
-# def grid(input:list[list[int]]):
-#     dx = [0,0,1,-1]
-#     dy = [1,-1,0,0]
-#     row = len(input)
-#     col = len(input[0])
-#     cnt = 0
-#
-#     def ing(x,y):
-#         if x<0 or y<0 or x >= row or y >= col:
-#             return
-#         # print(f'x = {x+1}  y = {y+1}')
-#         if input[x][y] == 1:
-#             input[x][y] = 0
-#             for i in range(4):
-#                 ing(x+dx[i],y+dy[i])
-#         else:
-#             return
-#
-#     for a in range(row):
-#         for b in range(col):
-#             if input[a][b] == 1:
-#                 cnt += 1
-#                 ing(a,b)
-#     return cnt
+def grid_dfs2(input:'list[list[int]]'):
+    dx = [0,0,1,-1]
+    dy = [1,-1,0,0]
+    row = len(input)
+    col = len(input[0])
+    cnt = 0
 
+    def ing(x,y):
+        if x<0 or y<0 or x >= row or y >= col:
+            return
+        # print(f'x = {x+1}  y = {y+1}')
+        if input[x][y] == 1:
+            input[x][y] = 0
+            for i in range(4):
+                ing(x+dx[i],y+dy[i])
+        else:
+            return
+
+    for a in range(row):
+        for b in range(col):
+            if input[a][b] == 1:
+                cnt += 1
+                ing(a,b)
+    return cnt
 a = [[1,1,1,1,0],
      [1,1,0,1,0],
      [1,1,0,0,0],
      [0,0,0,0,1]]
-print(grid(a))
-
+print(grid_dfs(a))
+print(grid_dfs2(a))
 
 
 

@@ -35,3 +35,4 @@ def dfs_stack(start):
                 stack.append(adj)
 
     return visited
+print(dfs_recursive(1,[]))
